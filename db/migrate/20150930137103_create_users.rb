@@ -4,13 +4,14 @@ class CreateUsers < ActiveRecord::Migration
       t.string :username, limit: 20
       t.string :email, limit: 50
       t.string :confirmation_token, limit: 10
-      t.datetime :confirmation_sent_at
+      t.datetime :confirmation_sent_at, null: false
       t.datetime :confirmed_at
       t.string :unconfirmed_email, limit: 50
       t.boolean :locked, default: false
       t.boolean :deleted, default: false
       t.boolean :blacklisted, default: false
       t.references :language, index: true, foreign_key: true
+      t.integer :created_by, default: nil
 
       t.timestamps null: false
     end

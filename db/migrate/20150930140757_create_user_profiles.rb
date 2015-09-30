@@ -1,8 +1,8 @@
-class CreateUserInformation < ActiveRecord::Migration
+class CreateUserProfiles < ActiveRecord::Migration
   def change
-    create_table :user_information do |t|
+    create_table :user_profiles, :id => false do |t|
       t.references :user, index: true, foreign_key: true
-      t.column :gender, 'ENUM("Male", "Female")'
+      t.column :gender, 'char(1)'
       t.string :fname, limit: 20
       t.string :lname, limit: 30
       t.string :mobile, limit: 20
@@ -13,10 +13,9 @@ class CreateUserInformation < ActiveRecord::Migration
       t.string :zipcode, limit: 20
       t.string :country, limit: 100
       t.integer :failed_attempts, limit: 1, default: 0
-      t.integer :created_by
 
     end
 
-    add_index :user_informations, :mobile, unique: true
+    add_index :user_profiles, :mobile, unique: true
   end
 end
