@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @password_question.question %>
+</p>
+
+<%= link_to 'Edit', edit_password_question_path(@password_question) %> |
+<%= link_to 'Back', password_questions_path %>
