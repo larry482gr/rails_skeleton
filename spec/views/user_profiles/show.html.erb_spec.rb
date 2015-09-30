@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "user_informations/show", type: :view do
+RSpec.describe "user_profiles/show", type: :view do
   before(:each) do
-    @user_information = assign(:user_information, UserInformation.create!(
+    @user_information = assign(:user_profiles, UserProfile.create!(
       :user => nil,
       :gender => "",
       :fname => "Fname",
