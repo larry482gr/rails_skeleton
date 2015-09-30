@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @user_information.user %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @user_information.gender %>
+</p>
+
+<p>
+  <strong>Fname:</strong>
+  <%= @user_information.fname %>
+</p>
+
+<p>
+  <strong>Lname:</strong>
+  <%= @user_information.lname %>
+</p>
+
+<p>
+  <strong>Mobile:</strong>
+  <%= @user_information.mobile %>
+</p>
+
+<p>
+  <strong>Photo:</strong>
+  <%= @user_information.photo %>
+</p>
+
+<p>
+  <strong>Addresses:</strong>
+  <%= @user_information.addresses %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @user_information.city %>
+</p>
+
+<p>
+  <strong>Region:</strong>
+  <%= @user_information.region %>
+</p>
+
+<p>
+  <strong>Zipcode:</strong>
+  <%= @user_information.zipcode %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @user_information.country %>
+</p>
+
+<p>
+  <strong>Failed attempts:</strong>
+  <%= @user_information.failed_attempts %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @user_information.created_by %>
+</p>
+
+<%= link_to 'Edit', edit_user_information_path(@user_information) %> |
+<%= link_to 'Back', user_informations_path %>

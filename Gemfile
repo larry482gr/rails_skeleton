@@ -7,8 +7,6 @@ gem 'rails', '4.2.4'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-gem 'polymer-rails'
-gem 'polymer-elements-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -56,12 +54,17 @@ group :development do
 end
 
 group :development, :production do
-  gem 'mysql2' # , '~> 0.3.20'
+  # At the moment newer versions of this gem does not work with Rails 4.2.4
+  gem 'mysql2', '~> 0.3.20'
+
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'rspec-activemodel-mocks'
 end
 
 group :test do
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite'
+  gem 'sqlite3'
 
   gem 'database_cleaner'
   gem 'capybara'
@@ -72,8 +75,5 @@ group :test do
   gem 'cucumber-rails-training-wheels'
   gem 'factory_girl'
   gem 'factory_girl_rails', :require => false
-  gem 'rspec'
-  gem 'rspec-rails'
-  gem 'rspec-activemodel-mocks'
 end
 

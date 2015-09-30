@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @user_password.user %>
+</p>
+
+<p>
+  <strong>Service:</strong>
+  <%= @user_password.service %>
+</p>
+
+<p>
+  <strong>Password question:</strong>
+  <%= @user_password.password_question %>
+</p>
+
+<p>
+  <strong>Password answer:</strong>
+  <%= @user_password.password_answer %>
+</p>
+
+<p>
+  <strong>Expires at:</strong>
+  <%= @user_password.expires_at %>
+</p>
+
+<%= link_to 'Edit', edit_user_password_path(@user_password) %> |
+<%= link_to 'Back', user_passwords_path %>

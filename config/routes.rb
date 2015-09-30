@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :user_passwords
+  resources :password_questions
+  resources :password_questions
+  resources :user_informations
+  resources :languages
+  resources :users
+  resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

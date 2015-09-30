@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @user.username %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Confirmation token:</strong>
+  <%= @user.confirmation_token %>
+</p>
+
+<p>
+  <strong>Confirmation sent at:</strong>
+  <%= @user.confirmation_sent_at %>
+</p>
+
+<p>
+  <strong>Confirmed at:</strong>
+  <%= @user.confirmed_at %>
+</p>
+
+<p>
+  <strong>Unconfirmed email:</strong>
+  <%= @user.unconfirmed_email %>
+</p>
+
+<p>
+  <strong>Locked:</strong>
+  <%= @user.locked %>
+</p>
+
+<p>
+  <strong>Deleted:</strong>
+  <%= @user.deleted %>
+</p>
+
+<p>
+  <strong>Blacklisted:</strong>
+  <%= @user.blacklisted %>
+</p>
+
+<p>
+  <strong>Language:</strong>
+  <%= @user.language %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
