@@ -1,6 +1,6 @@
 class UserPassword < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, touch: true
   # belongs_to :service
-  belongs_to :password_question, :foreign_key => 'question_1'
-  belongs_to :password_question, :foreign_key => 'question_2'
+
+  validates :password, presence: true, length: { minimum: 8, maximum: 25 }
 end

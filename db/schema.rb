@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150930164749) do
+ActiveRecord::Schema.define(version: 20151006183455) do
 
   create_table "languages", force: :cascade do |t|
     t.string   "locale",     limit: 10,                null: false
@@ -48,13 +48,12 @@ ActiveRecord::Schema.define(version: 20150930164749) do
   add_index "user_passwords", ["user_id"], name: "idx_user_id", using: :btree
 
   create_table "user_profiles", id: false, force: :cascade do |t|
-    t.integer "user_id",         limit: 4
-    t.string  "gender",          limit: 1,   default: "m",   null: false
-    t.string  "fname",           limit: 30
-    t.string  "lname",           limit: 30
-    t.string  "mobile",          limit: 20,                  null: false
-    t.string  "photo",           limit: 255
-    t.boolean "failed_attempts",             default: false
+    t.integer "user_id", limit: 4
+    t.string  "gender",  limit: 1,   default: "m", null: false
+    t.string  "fname",   limit: 30
+    t.string  "lname",   limit: 30
+    t.string  "mobile",  limit: 20,                null: false
+    t.string  "photo",   limit: 255
   end
 
   add_index "user_profiles", ["fname"], name: "idx_fname", using: :btree
@@ -66,7 +65,7 @@ ActiveRecord::Schema.define(version: 20150930164749) do
     t.string   "username",             limit: 20,                 null: false
     t.string   "email",                limit: 50,                 null: false
     t.string   "confirmation_token",   limit: 10
-    t.datetime "confirmation_sent_at",                            null: false
+    t.datetime "confirmation_sent_at"
     t.datetime "confirmed_at"
     t.string   "unconfirmed_email",    limit: 50
     t.boolean  "locked",                          default: false
@@ -76,6 +75,7 @@ ActiveRecord::Schema.define(version: 20150930164749) do
     t.integer  "created_by",           limit: 4
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
+    t.boolean  "failed_attemps",                  default: false
   end
 
   add_index "users", ["confirmation_token"], name: "idx_confirmation_token", unique: true, using: :btree
