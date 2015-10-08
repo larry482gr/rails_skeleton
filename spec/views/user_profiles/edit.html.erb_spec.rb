@@ -1,54 +1,44 @@
 require 'rails_helper'
 
-RSpec.describe "user_profiles/edit", type: :view do
+RSpec.describe 'user_profiles/edit', type: :view do
   before(:each) do
-    @user_information = assign(:user_profiles, UserProfile.create!(
-      :user => nil,
-      :gender => "",
-      :fname => "MyString",
-      :lname => "MyString",
-      :mobile => "MyString",
-      :photo => "MyString",
-      :addresses => "MyText",
-      :city => "MyString",
-      :region => "MyString",
-      :zipcode => "MyString",
-      :country => "MyString",
-      :failed_attempts => 1,
-      :created_by => 1
+    language = Language.new(locale: 'en', language: 'english', active: true)
+
+    @user = User.create!(
+        :username => 'Username',
+        :email => 'email@test.com',
+        :confirmation_token => 'f3q8hfi',
+        :locked => false,
+        :deleted => false,
+        :blacklisted => false,
+        :language => language.id
+    )
+
+    @user_profile = assign(:user_profiles, UserProfile.create!(
+      :user => @user,
+      :gender => 'm',
+      :fname => 'Fname',
+      :lname => 'Lname',
+      :mobile => '1234567890',
+      :photo => 'Photo'
     ))
   end
 
-  it "renders the edit user_profiles form" do
+  it 'renders the edit user_profiles form' do
     render
 
-    assert_select "form[action=?][method=?]", user_information_path(@user_information), "post" do
+    assert_select 'form[action=?][method=?]', user_profile_path(@user_profile), 'post' do
 
-      assert_select "input#user_information_user_id[name=?]", "user_profiles[user_id]"
+      assert_select 'input#user_information_gender[name=?]', 'user_profiles[gender]'
 
-      assert_select "input#user_information_gender[name=?]", "user_profiles[gender]"
+      assert_select 'input#user_information_fname[name=?]', 'user_profiles[fname]'
 
-      assert_select "input#user_information_fname[name=?]", "user_profiles[fname]"
+      assert_select 'input#user_information_lname[name=?]', 'user_profiles[lname]'
 
-      assert_select "input#user_information_lname[name=?]", "user_profiles[lname]"
+      assert_select 'input#user_information_mobile[name=?]', 'user_profiles[mobile]'
 
-      assert_select "input#user_information_mobile[name=?]", "user_profiles[mobile]"
+      assert_select 'input#user_information_photo[name=?]', 'user_profiles[photo]'
 
-      assert_select "input#user_information_photo[name=?]", "user_profiles[photo]"
-
-      assert_select "textarea#user_information_addresses[name=?]", "user_profiles[addresses]"
-
-      assert_select "input#user_information_city[name=?]", "user_profiles[city]"
-
-      assert_select "input#user_information_region[name=?]", "user_profiles[region]"
-
-      assert_select "input#user_information_zipcode[name=?]", "user_profiles[zipcode]"
-
-      assert_select "input#user_information_country[name=?]", "user_profiles[country]"
-
-      assert_select "input#user_information_failed_attempts[name=?]", "user_profiles[failed_attempts]"
-
-      assert_select "input#user_information_created_by[name=?]", "user_profiles[created_by]"
     end
   end
 end

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing User Informations</h1>
+<h1>Listing User Profiles</h1>
 
 <table>
   <thead>
@@ -23,24 +23,24 @@
   </thead>
 
   <tbody>
-    <% @user_informations.each do |user_information| %>
+    <% @user_profiles.each do |user_profile| %>
       <tr>
-        <td><%= user_information.user %></td>
-        <td><%= user_information.gender %></td>
-        <td><%= user_information.fname %></td>
-        <td><%= user_information.lname %></td>
-        <td><%= user_information.mobile %></td>
-        <td><%= user_information.photo %></td>
-        <td><%= user_information.addresses %></td>
-        <td><%= user_information.city %></td>
-        <td><%= user_information.region %></td>
-        <td><%= user_information.zipcode %></td>
-        <td><%= user_information.country %></td>
-        <td><%= user_information.failed_attempts %></td>
-        <td><%= user_information.created_by %></td>
-        <td><%= link_to 'Show', user_information %></td>
-        <td><%= link_to 'Edit', edit_user_information_path(user_information) %></td>
-        <td><%= link_to 'Destroy', user_information, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= user_profile.user %></td>
+        <td><%= user_profile.gender %></td>
+        <td><%= user_profile.fname %></td>
+        <td><%= user_profile.lname %></td>
+        <td><%= user_profile.mobile %></td>
+        <td><%= user_profile.photo %></td>
+        <td><%= user_profile.addresses %></td>
+        <td><%= user_profile.city %></td>
+        <td><%= user_profile.region %></td>
+        <td><%= user_profile.zipcode %></td>
+        <td><%= user_profile.country %></td>
+        <td><%= user_profile.failed_attempts %></td>
+        <td><%= user_profile.created_by %></td>
+        <td><%= link_to 'Show', user_profile %></td>
+        <td><%= link_to 'Edit', edit_user_profile_path(user_profile) %></td>
+        <td><%= link_to 'Destroy', user_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -48,4 +48,4 @@
 
 <br>
 
-<%= link_to 'New User information', new_user_information_path %>
+<%= link_to 'New User information', new_user_profile_path %>

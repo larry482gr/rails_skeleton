@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
   scope '(:locale)', locale: /en|gr/ do
-    resources :user_profiles
+    root 'static_pages#index'
+
     resources :users
+    resources :user_profiles
 
     namespace :admin do
       resources :languages
+      resources :roles
+      resources :permissions
     end
   end
 

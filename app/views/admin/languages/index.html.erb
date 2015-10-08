@@ -19,7 +19,7 @@
         <td><%= language.language %></td>
         <td><%= language.active %></td>
         <td><%= link_to 'Show', language %></td>
-        <td><%= link_to 'Edit', edit_language_path(language) %></td>
+        <td><%= link_to 'Edit', edit_admin_language_path(language) %></td>
         <td><%= link_to 'Destroy', language, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Language', new_language_path %>
+<%= link_to 'New Language', new_admin_language_path %>

@@ -53,9 +53,9 @@ RSpec.describe UserProfilesController, type: :controller do
   end
 
   describe "GET #new" do
-    it "assigns a new user_profiles as @user_profiles" do
+    it "assigns a new user_profile as @user_profile" do
       get :new, {}, valid_session
-      expect(assigns(:user_profiles)).to be_a_new(UserProfile)
+      expect(assigns(:user_profile)).to be_a_new(UserProfile)
     end
   end
 

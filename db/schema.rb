@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151006183455) do
+ActiveRecord::Schema.define(version: 20151008124335) do
 
   create_table "languages", force: :cascade do |t|
     t.string   "locale",     limit: 10,                null: false
@@ -32,6 +32,35 @@ ActiveRecord::Schema.define(version: 20151006183455) do
   end
 
   add_index "login_attempts", ["user_id"], name: "idx_user_id", using: :btree
+
+  create_table "permissions", force: :cascade do |t|
+    t.string   "label",       limit: 20,                null: false
+    t.string   "description", limit: 50
+    t.boolean  "active",                 default: true, null: false
+    t.integer  "created_by",  limit: 4
+    t.datetime "created_at",                            null: false
+  end
+
+  add_index "permissions", ["created_by"], name: "idx_created_by", using: :btree
+  add_index "permissions", ["label"], name: "idx_label", unique: true, using: :btree
+
+  create_table "permissions_roles", id: false, force: :cascade do |t|
+    t.integer "role_id",       limit: 4, null: false
+    t.integer "permission_id", limit: 4, null: false
+  end
+
+  add_index "permissions_roles", ["role_id", "permission_id"], name: "idx_role_permission", using: :btree
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "label",       limit: 10,                null: false
+    t.string   "description", limit: 30
+    t.boolean  "active",                 default: true, null: false
+    t.integer  "created_by",  limit: 4
+    t.datetime "created_at",                            null: false
+  end
+
+  add_index "roles", ["created_by"], name: "idx_created_by", using: :btree
+  add_index "roles", ["label"], name: "idx_label", unique: true, using: :btree
 
   create_table "user_passwords", force: :cascade do |t|
     t.integer  "user_id",    limit: 4,   null: false
@@ -84,6 +113,8 @@ ActiveRecord::Schema.define(version: 20151006183455) do
   add_index "users", ["username"], name: "idx_username", unique: true, using: :btree
 
   add_foreign_key "login_attempts", "users"
+  add_foreign_key "permissions", "users", column: "created_by"
+  add_foreign_key "roles", "users", column: "created_by"
   add_foreign_key "user_passwords", "users"
   add_foreign_key "user_profiles", "users"
   add_foreign_key "users", "languages"

@@ -1,20 +1,16 @@
-<%= form_for(@user_information) do |f| %>
-  <% if @user_information.errors.any? %>
+<%= form_for(@user_profile) do |f| %>
+  <% if @user_profile.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user_information.errors.count, "error") %> prohibited this user_information from being saved:</h2>
+      <h2><%= pluralize(@user_profile.errors.count, 'error') %> prohibited this user_information from being saved:</h2>
 
       <ul>
-      <% @user_information.errors.full_messages.each do |message| %>
+      <% @user_profile.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
   <div class="field">
     <%= f.label :gender %><br>
     <%= f.text_field :gender %>
@@ -34,34 +30,6 @@
   <div class="field">
     <%= f.label :photo %><br>
     <%= f.text_field :photo %>
-  </div>
-  <div class="field">
-    <%= f.label :addresses %><br>
-    <%= f.text_area :addresses %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br>
-    <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :region %><br>
-    <%= f.text_field :region %>
-  </div>
-  <div class="field">
-    <%= f.label :zipcode %><br>
-    <%= f.text_field :zipcode %>
-  </div>
-  <div class="field">
-    <%= f.label :country %><br>
-    <%= f.text_field :country %>
-  </div>
-  <div class="field">
-    <%= f.label :failed_attempts %><br>
-    <%= f.number_field :failed_attempts %>
-  </div>
-  <div class="field">
-    <%= f.label :created_by %><br>
-    <%= f.number_field :created_by %>
   </div>
   <div class="actions">
     <%= f.submit %>

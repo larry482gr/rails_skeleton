@@ -1,5 +1,5 @@
 class UserProfilesController < ApplicationController
-  before_action :set_user_information, only: [:show, :edit, :update, :destroy]
+  before_action :set_user_profile, only: [:show, :edit, :update, :destroy]
 
   # GET /user_profiles
   # GET /user_profiles.json
@@ -28,7 +28,7 @@ class UserProfilesController < ApplicationController
 
     respond_to do |format|
       if @user_profile.save
-        format.html { redirect_to @user_profile, notice: 'User information was successfully created.' }
+        format.html { redirect_to @user_profile, notice: 'User profile was successfully created.' }
         format.json { render :show, status: :created, location: @user_profile }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class UserProfilesController < ApplicationController
   def update
     respond_to do |format|
       if @user_profile.update(user_profile_params)
-        format.html { redirect_to @user_profile, notice: 'User information was successfully updated.' }
+        format.html { redirect_to @user_profile, notice: 'User profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @user_profile }
       else
         format.html { render :edit }
@@ -56,14 +56,14 @@ class UserProfilesController < ApplicationController
   def destroy
     @user_profile.destroy
     respond_to do |format|
-      format.html { redirect_to user_profiles_url, notice: 'User information was successfully destroyed.' }
+      format.html { redirect_to user_profiles_url, notice: 'User profile was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_user_information
+    def set_user_profile
       @user_profile = UserProfile.find(params[:id])
     end
 

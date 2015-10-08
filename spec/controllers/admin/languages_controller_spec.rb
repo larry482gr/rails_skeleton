@@ -152,7 +152,7 @@ RSpec.describe Admin::LanguagesController, type: :controller do
     it "redirects to the languages list" do
       language = Language.create! valid_attributes
       delete :destroy, {:id => language.to_param}, valid_session
-      expect(response).to redirect_to(languages_url)
+      expect(response).to redirect_to(admin_languages_url)
     end
   end
 

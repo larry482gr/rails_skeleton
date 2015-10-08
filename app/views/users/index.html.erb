@@ -28,10 +28,10 @@
         <td><%= user.confirmation_sent_at %></td>
         <td><%= user.confirmed_at %></td>
         <td><%= user.unconfirmed_email %></td>
-        <td><%= user.locked %></td>
-        <td><%= user.deleted %></td>
-        <td><%= user.blacklisted %></td>
-        <td><%= user.language %></td>
+        <td><%= user.locked ? 'Yes' : 'No' %></td>
+        <td><%= user.deleted ? 'Yes' : 'No' %></td>
+        <td><%= user.blacklisted ? 'Yes' : 'No' %></td>
+        <td><%= user.language.language.upcase %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

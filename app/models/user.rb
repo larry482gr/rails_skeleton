@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   MAXIMUM_FAILED_ATTEMPTS = 5
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   belongs_to :language
   has_one :user_profile
@@ -7,16 +8,23 @@ class User < ActiveRecord::Base
 
   has_many :login_attempts
 
-  validates :username, presence: true, uniqueness: true,
+  validates :username, presence: true,
+                       uniqueness: true,
                        length: { minimum: 6, maximum: 20 }
 
-  validates :email, presence: true, uniqueness: true,
+  validates :email, presence: true,
+                    uniqueness: true,
+                    format: { with: VALID_EMAIL_REGEX },
                     length: { maximum: 50 }
+
+  validates :unconfirmed_email, allow_blank: true,
+                                format: { with: VALID_EMAIL_REGEX },
+                                length: { maximum: 50 }
 
   validates_uniqueness_of :confirmation_token
 
 
-  before_update lock_user
+  before_update :lock_user
 
   private
 
