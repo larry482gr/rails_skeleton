@@ -1,18 +1,18 @@
 require 'rails_helper'
 
-RSpec.describe "languages/edit", type: :view do
+RSpec.describe "admin/languages/new", type: :view do
   before(:each) do
-    @language = assign(:language, Language.create!(
+    assign(:language, Language.new(
       :locale => "MyString",
       :language => "MyString",
       :active => false
     ))
   end
 
-  it "renders the edit language form" do
+  it "renders new language form" do
     render
 
-    assert_select "form[action=?][method=?]", language_path(@language), "post" do
+    assert_select "form[action=?][method=?]", languages_path, "post" do
 
       assert_select "input#language_locale[name=?]", "language[locale]"
 

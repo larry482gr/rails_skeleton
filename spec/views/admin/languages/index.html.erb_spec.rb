@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "languages/index", type: :view do
+RSpec.describe "admin/languages/index", type: :view do
   before(:each) do
     assign(:languages, [
       Language.create!(

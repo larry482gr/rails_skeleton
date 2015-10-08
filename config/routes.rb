@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  scope '(:locale)', locale: /en|gr/ do
+    resources :user_profiles
+    resources :users
 
-  resources :password_questions
-  resources :user_profiles
-  resources :languages
-  resources :users
+    namespace :admin do
+      resources :languages
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
