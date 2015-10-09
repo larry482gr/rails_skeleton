@@ -1,27 +1,37 @@
 require 'rails_helper'
 
-RSpec.describe "admin/roles/new", type: :view do
+RSpec.describe 'admin/roles/new', type: :view do
   before(:each) do
-    assign(:role, Role.new(
-      :label => "MyString",
-      :description => "MyString",
-      :active => false,
-      :created_by => 1
-    ))
+    language = Language.new(locale: 'en', language: 'english', active: true)
+
+    user = User.create!(
+        :username => 'Username',
+        :email => 'email@test.com',
+        :confirmation_token => 'f3q8hfi',
+        :language => language.id
+    )
+
+    @role = Role.new(
+      :id => 1,
+      :label => 'MyString',
+      :description => 'MyString',
+      :active => true,
+      :created_by => user
+    )
   end
 
-  it "renders new admin_role form" do
+  it 'renders new admin_role form' do
     render
 
-    assert_select "form[action=?][method=?]", admin_roles_path, "post" do
+    assert_select 'form[action=?][method=?]', admin_role_path(@role), 'post' do
 
-      assert_select "input#role_label[name=?]", "role[label]"
+      assert_select 'input#role_label[name=?]', 'role[label]'
 
-      assert_select "input#role_description[name=?]", "role[description]"
+      assert_select 'input#role_description[name=?]', 'role[description]'
 
-      assert_select "input#role_active[name=?]", "role[active]"
+      assert_select 'input#role_active[name=?]', 'role[active]'
 
-      assert_select "input#role_created_by[name=?]", "role[created_by]"
+      assert_select 'input#role_created_by[name=?]', 'role[created_by]'
     end
   end
 end

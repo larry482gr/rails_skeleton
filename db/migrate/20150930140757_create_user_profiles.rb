@@ -1,7 +1,7 @@
 class CreateUserProfiles < ActiveRecord::Migration
   def change
     create_table :user_profiles, :id => false, options: 'CHARSET=latin1 COLLATE=latin1_general_ci' do |t|
-      t.references :user
+      t.references :user, null: false
       t.column :gender, 'char(1)', null: false, default: 'm'
       t.string :fname
       t.string :lname

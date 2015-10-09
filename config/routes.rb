@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     root 'static_pages#index'
 
     resources :users
-    resources :user_profiles
+    resources :user_profiles, except: [:new, :create]
 
     namespace :admin do
       resources :languages

@@ -5,19 +5,11 @@
 <table>
   <thead>
     <tr>
-      <th>User</th>
       <th>Gender</th>
       <th>Fname</th>
       <th>Lname</th>
       <th>Mobile</th>
       <th>Photo</th>
-      <th>Addresses</th>
-      <th>City</th>
-      <th>Region</th>
-      <th>Zipcode</th>
-      <th>Country</th>
-      <th>Failed attempts</th>
-      <th>Created by</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -25,27 +17,15 @@
   <tbody>
     <% @user_profiles.each do |user_profile| %>
       <tr>
-        <td><%= user_profile.user %></td>
         <td><%= user_profile.gender %></td>
         <td><%= user_profile.fname %></td>
         <td><%= user_profile.lname %></td>
         <td><%= user_profile.mobile %></td>
         <td><%= user_profile.photo %></td>
-        <td><%= user_profile.addresses %></td>
-        <td><%= user_profile.city %></td>
-        <td><%= user_profile.region %></td>
-        <td><%= user_profile.zipcode %></td>
-        <td><%= user_profile.country %></td>
-        <td><%= user_profile.failed_attempts %></td>
-        <td><%= user_profile.created_by %></td>
-        <td><%= link_to 'Show', user_profile %></td>
-        <td><%= link_to 'Edit', edit_user_profile_path(user_profile) %></td>
-        <td><%= link_to 'Destroy', user_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', user_profile_path(user_profile.user_id) %></td>
+        <td><%= link_to 'Edit', edit_user_profile_path(user_profile.user_id) %></td>
+        <td><%= link_to 'Destroy', user_profile_path(user_profile.user_id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New User information', new_user_profile_path %>

@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @user_profile %> |
+<%= link_to 'Show', user_profile_path(@user_profile.user_id) %> |
 <%= link_to 'Back', user_profiles_path %>

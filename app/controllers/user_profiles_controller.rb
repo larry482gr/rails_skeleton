@@ -12,29 +12,8 @@ class UserProfilesController < ApplicationController
   def show
   end
 
-  # GET /user_profiles/new
-  def new
-    @user_profile = UserProfile.new
-  end
-
   # GET /user_profiles/1/edit
   def edit
-  end
-
-  # POST /user_profiles
-  # POST /user_profiles.json
-  def create
-    @user_profile = UserProfile.new(user_profile_params)
-
-    respond_to do |format|
-      if @user_profile.save
-        format.html { redirect_to @user_profile, notice: 'User profile was successfully created.' }
-        format.json { render :show, status: :created, location: @user_profile }
-      else
-        format.html { render :new }
-        format.json { render json: @user_profile.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /user_profiles/1
@@ -64,11 +43,11 @@ class UserProfilesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user_profile
-      @user_profile = UserProfile.find(params[:id])
+      @user_profile = UserProfile.find_by_user_id(params[:user_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_profile_params
-      params.require(:user_profile).permit(:user_id, :gender, :fname, :lname, :mobile, :photo, :addresses, :city, :region, :zipcode, :country, :failed_attempts, :created_by)
+      params.require(:user_profile).permit(:user_id, :gender, :fname, :lname, :mobile, :photo, :created_by)
     end
 end

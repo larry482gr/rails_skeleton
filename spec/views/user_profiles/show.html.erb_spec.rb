@@ -8,9 +8,6 @@ RSpec.describe 'user_profiles/show', type: :view do
         :username => 'Username',
         :email => 'email@test.com',
         :confirmation_token => 'f3q8hfi',
-        :locked => false,
-        :deleted => false,
-        :blacklisted => false,
         :language => language.id
     )
 
